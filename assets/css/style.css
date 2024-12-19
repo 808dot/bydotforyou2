@@ -1,105 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+
 /* Resetowanie domyślnych marginesów i ustawienia box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Trajan', serif;
+    font-family: 'Cinzel', serif;
 }
+
 a {
-    text-decoration: none;  /* Usuwa podkreślenie z linków */
-    color: inherit;         /* Ustala kolor tekstu na dziedziczony (z rodzica) */
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Dodanie czcionki Trajan */
+/* Czcionka Trajan */
 @font-face {
-    font-family: 'Trajan'; /* Nazwa czcionki */
-    src: url('../fonts/Trajan.ttf') format('truetype'); /* Ścieżka do pliku czcionki */
-    font-weight: normal; /* Możesz zmieniać wagę czcionki np. bold, normal */
-    font-style: normal; /* Możesz ustawić kursywę: normal lub italic */
+    font-family: 'Trajan';
+    src: url('../fonts/Trajan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-/* Ogólne style strony */
 body, html {
     height: 100%;
+    background-color: black;
 }
 
-/* Styl wideo w tle */
+/* Wideo w tle */
 #background-video {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    z-index: -1; 
-    background-color: black; /* Wypełnienie dla ciemniejszych ekranów */
+    object-fit: cover;
+    z-index: -1;
+    background-color: black;
 }
 
-/* Kontener dla menu */
-.content-container{
-    /* position: relative; */
+/* Kontener treści */
+.content-container {
     margin-top: 10vh;
-    z-index: 1; /* Treść na wierzchu */
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     color: white;
     text-align: center;
-
 }
 
-/* Styl logo */
+/* Logo */
 .logo {
     max-width: 300px;
-    width: 50%; /* Procentowo, aby logo zmieniało rozmiar na mniejszych ekranach */
+    width: 50%;
     margin-bottom: 50px;
     object-fit: cover;
 }
 
-/* Lista menu */
+/* Menu */
 ul.menu {
     list-style: none;
 }
 
-/* Styl dla pozycji menu */
 .menu-item {
     display: inline-block;
-    font-size: clamp(24px, 5vw, 64px); /* Minimalny 24px, maksymalny 64px */
+    font-size: clamp(24px, 5vw, 64px);
     margin: 10px 0;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.2s;
-    font-family: 'Trajan', serif;
     font-weight: bold;
     text-transform: uppercase;
-
-    /* Gradient dla efektu metalicznego srebra */
+    text-align: center;
+    transition: transform 0.2s;
     background: linear-gradient(90deg, #E6E6E6, #BFBFBF, #FFFFFF, #A6A6A6, #E6E6E6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
 
     /* Wyraźniejszy cień dla głębi */
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 
-                 0px 0px 8px rgba(255, 255, 255, 0.8);
-
-    text-align: center;
+                 0px 0px 14px rgba(255, 255, 255, 0.8);
 }
 
-/* Efekt powiększenia na hover */
 .menu-item:hover {
-    transform: scale(1.1); /* Powiększenie na hover */
+    transform: scale(1.1);
 }
 
-/* Efekt na kliknięcie */
 .menu-item:active {
-    transform: scale(0.9); /* Lekkie zmniejszenie na kliknięcie */
+    transform: scale(0.9);
 }
 
-
+/* Galeria */
 .gallery-container {
     width: 75%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 kolumny w widoku desktopowym */
+    grid-template-columns: repeat(3, 1fr);
     gap: 150px;
     margin-top: 20px;
 }
@@ -111,68 +105,56 @@ ul.menu {
 .item img {
     width: 100%;
     height: auto;
-    /* border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .item-name {
     margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
-    font-family: 'Trajan', serif;
 }
 
-/* Dostosowanie do mniejszych ekranów (wersja mobilna) */
+/* Responsywność galerii */
 @media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr); /* 2 kolumny */
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
-    .gallery {
-        grid-template-columns: 1fr; /* 1 kolumna */
+    .gallery-container {
+        grid-template-columns: 1fr;
     }
 }
 
+/* Menu dla responsywności */
 .menu-items {
     display: flex;
-    flex-wrap: wrap; /* Przenoszenie elementów do nowej linii na małych ekranach */
-    justify-content: center; /* Centrowanie elementów */
-    gap: 20px; /* Odstęp między elementami */
-    list-style: none; /* Usunięcie punktów listy */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Styl pozycji menu */
 .menu-items li {
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    text-transform: uppercase; /* Wielkie litery */
+    text-transform: uppercase;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Efekt hover */
-
-
-/* Responsywność */
 @media (max-width: 768px) {
     .menu-items li {
-        font-size: 14px; /* Mniejsza czcionka na mniejszych ekranach */
+        font-size: 14px;
         padding: 8px 16px;
     }
 }
 
-@media (max-width: 480px) {
-    .menu-items {
-        justify-content: center; /* Menu wyrównane do lewej na małych ekranach */
-    }
-}
-
+/* Kontener zapisu */
 .saves-container {
     max-width: 600px;
     margin: 0 auto;
@@ -187,11 +169,8 @@ ul.menu {
     padding: 10px 15px;
     margin-bottom: 10px;
     border-radius: 5px;
-    transition: background-color 0.3s;
-    gap:5vw;
+    gap: 5vw;
 }
-
-
 
 .save-item .save-name {
     font-weight: bold;
@@ -202,4 +181,3 @@ ul.menu {
 .save-item .save-location {
     font-size: 14px;
 }
-
