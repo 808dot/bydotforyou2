@@ -5,6 +5,10 @@
     box-sizing: border-box;
     font-family: 'Trajan', serif;
 }
+a {
+    text-decoration: none;  /* Usuwa podkreślenie z linków */
+    color: inherit;         /* Ustala kolor tekstu na dziedziczony (z rodzica) */
+}
 
 /* Dodanie czcionki Trajan */
 @font-face {

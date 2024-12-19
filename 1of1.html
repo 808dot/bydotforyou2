@@ -18,16 +18,26 @@
         </a>
         <nav>
             <ul class="menu-items">
-                <li>Pants</li>
-                <li>Hoodies</li>
-                <li>Crewneck</li>
-                <li>T-shirt</li>
-                <li>Bags</li>
+                <li><a href="1of1.html?category=pants">Pants</a></li>
+                <li><a href="1of1.html?category=hoodies">Hoodies</a></li>
+                <li><a href="1of1.html?category=crewneck">Crewneck</a></li>
+                <li><a href="1of1.html?category=t-shirt">T-shirt</a></li>
+                <li><a href="1of1.html?category=bags">Bags</a></li>
             </ul>
         </nav>
 
         <div class="gallery-container">
             <script>
+
+                // Funkcja do pobrania parametrów z URL
+                function getURLParameter(name) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(name);
+                }
+
+                // Odczytanie wartości parametru "category"
+                const category = getURLParameter('category') || 'pants';
+                
                 // Kontener galerii
                 const galleryContainer = document.querySelector('.gallery-container');
         
@@ -39,7 +49,7 @@
         
                     // Tworzenie obrazka
                     const img = document.createElement('img');
-                    img.src = "assets/img/pants.png"; // Ścieżka do obrazka
+                    img.src = `assets/img/${category}.png`; // Ścieżka do obrazka
                     img.alt = `Przedmiot ${i}`;      // Tekst alternatywny
         
                     // Tworzenie elementu z nazwą przedmiotu
