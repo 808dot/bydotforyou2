@@ -1,9 +1,12 @@
+/* Resetowanie domyślnych marginesów i ustawienia box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Trajan', serif;
 }
 
+/* Dodanie czcionki Trajan */
 @font-face {
     font-family: 'Trajan'; /* Nazwa czcionki */
     src: url('../fonts/Trajan.ttf') format('truetype'); /* Ścieżka do pliku czcionki */
@@ -11,51 +14,188 @@
     font-style: normal; /* Możesz ustawić kursywę: normal lub italic */
 }
 
+/* Ogólne style strony */
 body, html {
     height: 100%;
-    overflow: hidden;
 }
 
+/* Styl wideo w tle */
 #background-video {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Wypełnia całą przestrzeń */
-    z-index: -1; /* Umieszcza wideo za treścią */
+    object-fit: cover; 
+    z-index: -1; 
+    background-color: black; /* Wypełnienie dla ciemniejszych ekranów */
 }
 
-.menu-container {
-    position: relative;
+/* Kontener dla menu */
+.content-container{
+    /* position: relative; */
+    margin-top: 10vh;
     z-index: 1; /* Treść na wierzchu */
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     color: white;
+    text-align: center;
+
 }
 
+/* Styl logo */
 .logo {
     max-width: 300px;
+    width: 50%; /* Procentowo, aby logo zmieniało rozmiar na mniejszych ekranach */
     margin-bottom: 50px;
+    object-fit: cover;
 }
 
+/* Lista menu */
 ul.menu {
     list-style: none;
 }
 
+/* Styl dla pozycji menu */
 .menu-item {
     display: inline-block;
-    font-size: 64px;
+    font-size: clamp(24px, 5vw, 64px); /* Minimalny 24px, maksymalny 64px */
     margin: 10px 0;
-    /* padding: 10px 20px; */
-    color: #fff;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
-    font-family:'Trajan';
+    font-family: 'Trajan', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    /* Gradient dla efektu metalicznego srebra */
+    background: linear-gradient(90deg, #E6E6E6, #BFBFBF, #FFFFFF, #A6A6A6, #E6E6E6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Wyraźniejszy cień dla głębi */
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5), 
+                 0px 0px 8px rgba(255, 255, 255, 0.8);
+
+    text-align: center;
 }
 
+/* Efekt powiększenia na hover */
 .menu-item:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Powiększenie na hover */
 }
 
+/* Efekt na kliknięcie */
 .menu-item:active {
+    transform: scale(0.9); /* Lekkie zmniejszenie na kliknięcie */
 }
+
+
+.gallery-container {
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolumny w widoku desktopowym */
+    gap: 150px;
+    margin-top: 20px;
+}
+
+.item {
+    text-align: center;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    /* border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.item-name {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Trajan', serif;
+}
+
+/* Dostosowanie do mniejszych ekranów (wersja mobilna) */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolumny */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr; /* 1 kolumna */
+    }
+}
+
+.menu-items {
+    display: flex;
+    flex-wrap: wrap; /* Przenoszenie elementów do nowej linii na małych ekranach */
+    justify-content: center; /* Centrowanie elementów */
+    gap: 20px; /* Odstęp między elementami */
+    list-style: none; /* Usunięcie punktów listy */
+    padding: 0;
+    margin: 0;
+}
+
+/* Styl pozycji menu */
+.menu-items li {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Wielkie litery */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Efekt hover */
+
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .menu-items li {
+        font-size: 14px; /* Mniejsza czcionka na mniejszych ekranach */
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-items {
+        justify-content: center; /* Menu wyrównane do lewej na małych ekranach */
+    }
+}
+
+.saves-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.save-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    gap:5vw;
+}
+
+
+
+.save-item .save-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.save-item .save-date,
+.save-item .save-location {
+    font-size: 14px;
+}
+

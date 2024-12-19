@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bydotforyou</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="assets/background/background.webm" type="video/webm">
+    </video>
+
+    <div class="content-container">
+        <a href="index.html">
+            <img src="assets/img/YOU_logo.png" alt="Logo Gry" class="logo">
+        </a>
+        <nav>
+            <ul class="menu-items">
+                <li>Pants</li>
+                <li>Hoodies</li>
+                <li>Crewneck</li>
+                <li>T-shirt</li>
+                <li>Bags</li>
+            </ul>
+        </nav>
+
+        <div class="gallery-container">
+            <script>
+                // Kontener galerii
+                const galleryContainer = document.querySelector('.gallery-container');
+        
+                // Tworzenie 12 elementów
+                for (let i = 1; i <= 12; i++) {
+                    // Tworzenie głównego elementu "item"
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('item');
+        
+                    // Tworzenie obrazka
+                    const img = document.createElement('img');
+                    img.src = "assets/img/pants.png"; // Ścieżka do obrazka
+                    img.alt = `Przedmiot ${i}`;      // Tekst alternatywny
+        
+                    // Tworzenie elementu z nazwą przedmiotu
+                    const itemName = document.createElement('div');
+                    itemName.classList.add('item-name');
+                    itemName.textContent = `Przedmiot ${i}`; // Nazwa przedmiotu
+        
+                    // Dodawanie obrazka i nazwy do elementu "item"
+                    itemDiv.appendChild(img);
+                    itemDiv.appendChild(itemName);
+        
+                    // Dodanie "item" do kontenera galerii
+                    galleryContainer.appendChild(itemDiv);
+                }
+            </script>
+    </div>
+</body>
+</html>
