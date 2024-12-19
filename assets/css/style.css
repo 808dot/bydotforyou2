@@ -40,7 +40,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../background/background.png'); /* Domyślne tło */
+    background-image: url('../background/background_1.1.1.png'); /* Domyślne tło */
     background-position: center;
     background-size: cover;
     z-index: -1;
@@ -55,7 +55,7 @@ body, html {
     object-fit: cover;
     z-index: -1;
     opacity: 0; /* Ukrycie wideo, gdy się ładuje */
-    transition: opacity 1s ease; /* Animacja dla przejścia */
+    transition: opacity 3s ease; 
 }
 
 
